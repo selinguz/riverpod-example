@@ -8,12 +8,10 @@ class FavouriteNotifier extends _$FavouriteNotifier {
   //initial value
   @override
   Set<Product> build() {
-    final favouritedProducts = ref.watch(favouriteNotifierProvider);
-    return {
-      
-    };
+    return {};
   }
 
+  //methods to update state
   void addToFavourites(Product product) {
     if (!state.contains(product)) {
       state = {...state, product};

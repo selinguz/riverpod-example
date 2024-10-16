@@ -1,22 +1,26 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_files/providers/cart_provider.dart';
 import 'package:riverpod_files/providers/favourite_provider.dart';
+import 'package:riverpod_files/providers/products_provider.dart';
 
 class FavouritesScreen extends ConsumerStatefulWidget {
   const FavouritesScreen({super.key});
 
   @override
-  ConsumerState<FavouritesScreen> createState() => _FavouriteScreenState();
+  ConsumerState<FavouritesScreen> createState() => _FavouritesScreenState();
 }
 
-class _FavouriteScreenState extends ConsumerState<FavouritesScreen> {
+class _FavouritesScreenState extends ConsumerState<FavouritesScreen> {
+  bool showCoupon = true;
+
   @override
   Widget build(BuildContext context) {
     final favouritedProducts = ref.watch(favouriteNotifierProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Cart'),
+        title: const Text('Your Favourites'),
         centerTitle: true,
         // actions: [],
       ),
@@ -51,4 +55,3 @@ class _FavouriteScreenState extends ConsumerState<FavouritesScreen> {
     );
   }
 }
- */

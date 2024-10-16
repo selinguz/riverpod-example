@@ -14,8 +14,6 @@ class HomeScreen extends ConsumerWidget {
     final allProducts = ref.watch(productsProvider);
     final cartProducts = ref.watch(cartNotifierProvider);
     final favouritedProducts = ref.watch(favouriteNotifierProvider);
-    final numberOfItemsFavourited = ref.watch(favouriteNotifierProvider).length;
-    const bool isFavourited = false;
 
     return Scaffold(
       appBar: AppBar(
@@ -64,24 +62,22 @@ class HomeScreen extends ConsumerWidget {
                       child: const Text('Add To Cart'),
                     ),
                   if (!favouritedProducts.contains(allProducts[index]))
-                    InkWell(
-                      child: const Icon(Icons.favorite_border),
-                      onTap: () {
+                    IconButton(
+                      onPressed: () {
                         ref
                             .read(favouriteNotifierProvider.notifier)
                             .addToFavourites(allProducts[index]);
-                        print(favouritedProducts.length);
                       },
+                      icon: const Icon(Icons.favorite_outline),
                     ),
                   if (favouritedProducts.contains(allProducts[index]))
-                    InkWell(
-                      child: const Icon(Icons.favorite),
-                      onTap: () {
+                    IconButton(
+                      onPressed: () {
                         ref
                             .read(favouriteNotifierProvider.notifier)
                             .removeFromFavourites(allProducts[index]);
-                        print(favouritedProducts.length);
                       },
+                      icon: const Icon(Icons.favorite),
                     ),
                 ],
               ),
